@@ -1,0 +1,17 @@
+﻿<Page x:Class="Chat_Client.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Chat_Client.Pages"
+      mc:Ignorable="d"
+      Title="LoginPage" Height="450" Width="800" Loaded="Page_Loaded">
+
+	<Grid>
+		<Rectangle HorizontalAlignment="Center" Height="226" Stroke="Black" VerticalAlignment="Center" Width="400"/>
+		<TextBox HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" MaxLength="16"/>
+		<Button Content="Login" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top" Width="70"/>
+		<Label Content="Server Status: Checking..." HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top" Padding="10,5,5,10"/>
+		<Label x:Name="label_status"  Content="Username" HorizontalAlignment="Left" Margin="310,189,0,0" VerticalAlignment="Top" Padding="0,0,0,2"/>
+	</Grid>
+</Page>
