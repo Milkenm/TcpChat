@@ -5,13 +5,11 @@ namespace Chat_API.Packets
 	[Serializable]
 	public class LoginResultPacket : IPacket
 	{
-		public bool Success { get; }
-		public string ErrorMessage { get; }
+		public ELoginResult Result;
 
-		public LoginResultPacket(bool success, string errorMessage)
+		public LoginResultPacket(ELoginResult result)
 		{
-			Success = success;
-			ErrorMessage = errorMessage;
+			Result = result;
 		}
 	}
 }

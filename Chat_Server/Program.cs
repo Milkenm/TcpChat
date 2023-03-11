@@ -17,9 +17,9 @@ namespace Chat_Server
 		private static TcpServer Server;
 
 		private static long ClientId;
-		private static Dictionary<Socket, ChatUserInfo> ConnectedClients = new Dictionary<Socket, ChatUserInfo>();
+		private static readonly Dictionary<Socket, ChatUserInfo> ConnectedClients = new Dictionary<Socket, ChatUserInfo>();
 
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			Server = new TcpServer(4725);
 			Server.OnClientConnect += Server_OnClientConnect;
@@ -33,43 +33,54 @@ namespace Chat_Server
 		private static void Server_OnDataReceived(Socket client, byte[] data)
 		{
 			IPacket packet = data.ToObject<IPacket>();
-			if (packet is LoginPacket loginPacket)
+			switch (packet)
 			{
-				// Check if username is already connected
-				ChatUserInfo existingUsername = ConnectedClients.Values.FirstOrDefault(c => c.Username == loginPacket.Username);
-				if (existingUsername != null)
-				{
-					LoginResultPacket result = new LoginResultPacket(false, "Someone with that username is already connected.");
-					Server.SendObject(client, data);
-				}
+				case RequestServerStatusPacket requestStatusPacket:
+					{
+						ServerStatusPacket response = new ServerStatusPacket(EServerStatus.ONLINE);
+						Server.SendObject(client, response);
+						break;
+					}
+				case LoginPacket loginPacket:
+					{
+						// Check if username is already connected
+						ChatUserInfo existingUsername = ConnectedClients.Values.FirstOrDefault(c => c.Username == loginPacket.Username);
+						if (existingUsername != null)
+						{
+							LoginResultPacket result = new LoginResultPacket(ELoginResult.USERNAME_TAKEN);
+							Server.SendObject(client, data);
+						}
 
-				// Success
-				ChatUserInfo userInfo = ConnectedClients[client];
-				userInfo.SetName(loginPacket.Username);
-				Server.SendObject(client, new LoginResultPacket(true, string.Empty));
-			}
-			else if (packet is ClientMessagePacket messagePacket)
-			{
-				Console.WriteLine($"Received new {nameof(ClientMessagePacket)} packet from IP {client.RemoteEndPoint}.");
+						// Success
+						ChatUserInfo userInfo = ConnectedClients[client];
+						userInfo.SetName(loginPacket.Username);
+						Server.SendObject(client, new LoginResultPacket(ELoginResult.SUCCESS));
+						break;
+					}
+				case ClientMessagePacket messagePacket:
+					{
+						Console.WriteLine($"Received new {nameof(ClientMessagePacket)} packet from IP {client.RemoteEndPoint}.");
 
-				// Unknown client
-				ChatUserInfo whoSent = ConnectedClients[client];
-				if (whoSent == null)
-				{
-					Console.WriteLine("Unknown client.");
-					return;
-				}
+						// Unknown client
+						ChatUserInfo whoSent = ConnectedClients[client];
+						if (whoSent == null)
+						{
+							Console.WriteLine("Unknown client.");
+							break;
+						}
 
-				// Send message back to all connected clients (except the one who sent it)
-				if (ConnectedClients.Count - 1 == 0) { return; }
-				Console.WriteLine($"{whoSent.Username}: {messagePacket.Message}");
-				Console.WriteLine($"Broadcasting message to {ConnectedClients.Count - 1} clients.");
-				foreach (Socket connectedClient in ConnectedClients.Keys)
-				{
-					if (connectedClient == client) { continue; }
-					Server.SendObject(connectedClient, new ServerMessagePacket(whoSent.Username, messagePacket.Message));
-					Console.WriteLine("Sent to 1 client.");
-				}
+						// Send message back to all connected clients (except the one who sent it)
+						if (ConnectedClients.Count - 1 == 0) { break; }
+						Console.WriteLine($"{whoSent.Username}: {messagePacket.Message}");
+						Console.WriteLine($"Broadcasting message to {ConnectedClients.Count - 1} clients.");
+						foreach (Socket connectedClient in ConnectedClients.Keys)
+						{
+							if (connectedClient == client) { continue; }
+							Server.SendObject(connectedClient, new ServerMessagePacket(whoSent.Username, messagePacket.Message));
+							Console.WriteLine("Sent to 1 client.");
+						}
+						break;
+					}
 			}
 		}
 

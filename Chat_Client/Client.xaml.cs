@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
+using Chat_Client.Pages;
 
 namespace Chat_Client
 {
@@ -19,9 +11,28 @@ namespace Chat_Client
 	/// </summary>
 	public partial class Client : Window
 	{
+		public static Client GetInstance()
+		{
+			return Instance ?? new Client();
+		}
+
+		private static Client Instance;
+
 		public Client()
 		{
 			InitializeComponent();
+			Instance = this;
+		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e)
+		{
+			SetPage(new LoginPage());
+		}
+
+		public void SetPage(Page page)
+		{
+			string pageUri = $"Pages/{page.GetType().Name}.xaml";
+			frame_page.Source = new Uri(pageUri, UriKind.Relative);
 		}
 	}
 }

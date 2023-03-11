@@ -9,9 +9,9 @@
 
 	<Grid>
 		<Rectangle HorizontalAlignment="Center" Height="226" Stroke="Black" VerticalAlignment="Center" Width="400"/>
-		<TextBox HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" MaxLength="16"/>
-		<Button Content="Login" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top" Width="70"/>
-		<Label Content="Server Status: Checking..." HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top" Padding="10,5,5,10"/>
-		<Label x:Name="label_status"  Content="Username" HorizontalAlignment="Left" Margin="310,189,0,0" VerticalAlignment="Top" Padding="0,0,0,2"/>
+		<TextBox x:Name="textBox_username" KeyDown="textBox_username_KeyDown" HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" MaxLength="16"/>
+		<Button x:Name="button_login"  Content="Login" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top" Width="70" Click="button_login_Click"/>
+		<Label x:Name="label_status" Content="Server Status: Checking..." HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top" Padding="10,5,5,10"/>
+		<Label Content="Username" HorizontalAlignment="Left" Margin="310,189,0,0" VerticalAlignment="Top" Padding="0,0,0,2"/>
 	</Grid>
 </Page>

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatUserInfo.cs" />
+    <Compile Include="Packets\ELoginResult.cs" />
     <Compile Include="Packets\EServerStatus.cs" />
     <Compile Include="Packets\IPacket.cs" />
     <Compile Include="Packets\LoginPacket.cs" />

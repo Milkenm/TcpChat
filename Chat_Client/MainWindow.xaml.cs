@@ -14,7 +14,7 @@ namespace Chat_Client
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private TcpClient Client = new TcpClient();
+		private readonly TcpClient Client = new TcpClient();
 		private string Username;
 
 		public MainWindow()
@@ -25,7 +25,7 @@ namespace Chat_Client
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			Client.OnDataReceived += this.Client_OnDataReceived;
+			Client.OnDataReceived += Client_OnDataReceived;
 		}
 
 		private void Client_OnDataReceived(EndPoint source, byte[] data)
@@ -34,10 +34,7 @@ namespace Chat_Client
 			IPacket packet = ScriptsLibV2.Extensions.ByteExtensions.ToObject<IPacket>(data);
 			if (packet is ServerMessagePacket serverMessagePacket)
 			{
-				Dispatcher.Invoke(() =>
-				{
-					listBox_chat.Items.Add($"{serverMessagePacket.Username}: {serverMessagePacket.Message}");
-				});
+				Dispatcher.Invoke(() => listBox_chat.Items.Add($"{serverMessagePacket.Username}: {serverMessagePacket.Message}"));
 			}
 		}
 
@@ -67,7 +64,7 @@ namespace Chat_Client
 				IPacket packet = (IPacket)data;
 				if (packet is LoginResultPacket loginResult)
 				{
-					if (loginResult.Success)
+					if (loginResult.Result == ELoginResult.SUCCESS)
 					{
 						MessageBox.Show("Logged in successfully.");
 						Dispatcher.Invoke(() =>

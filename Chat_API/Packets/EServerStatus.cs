@@ -4,5 +4,6 @@
 	{
 		ONLINE,
 		MAINTENANCE,
+		OFFLINE,
 	}
 }
