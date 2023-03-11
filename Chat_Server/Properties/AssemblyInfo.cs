@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Chat_Server")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Deloitte")]
+[assembly: AssemblyCompany("Milkenm")]
 [assembly: AssemblyProduct("Chat_Server")]
-[assembly: AssemblyCopyright("Copyright © Deloitte 2023")]
+[assembly: AssemblyCopyright("Copyright © Milkenm 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

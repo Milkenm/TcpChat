@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Chat_Client")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Deloitte")]
+[assembly: AssemblyCompany("Milkenm")]
 [assembly: AssemblyProduct("Chat_Client")]
-[assembly: AssemblyCopyright("Copyright © Deloitte 2023")]
+[assembly: AssemblyCopyright("Copyright © Milkenm 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
