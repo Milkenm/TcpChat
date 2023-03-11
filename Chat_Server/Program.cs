@@ -55,6 +55,10 @@ namespace Chat_Server
 						ChatUserInfo userInfo = ConnectedClients[client];
 						userInfo.SetName(loginPacket.Username);
 						Server.SendObject(client, new LoginResultPacket(ELoginResult.SUCCESS));
+
+						// Update all other clients about the new user
+						SendUsersListToAllClients();
+
 						break;
 					}
 				case ClientMessagePacket messagePacket:
@@ -81,7 +85,33 @@ namespace Chat_Server
 						}
 						break;
 					}
+				case RequestUsersInRoomPacket _:
+					{
+						SendUserListToClient(client);
+						break;
+					}
 			}
+		}
+
+		private static void SendUsersListToAllClients()
+		{
+			foreach (Socket connectedClient in ConnectedClients.Keys)
+			{
+				SendUserListToClient(connectedClient);
+			}
+		}
+
+		private static void SendUserListToClient(Socket client)
+		{
+			List<string> usersInRoom = new List<string>();
+
+			foreach (ChatUserInfo userInfo in ConnectedClients.Values)
+			{
+				usersInRoom.Add(userInfo.Username);
+			}
+
+			UsersInRoomPacket response = new UsersInRoomPacket(usersInRoom);
+			Server.SendObject(client, response);
 		}
 
 		private static void Server_OnClientConnect(Socket client)
@@ -101,6 +131,8 @@ namespace Chat_Server
 			ChatUserInfo disconnectedClient = ConnectedClients[client];
 			Console.WriteLine($"Client (ID #{disconnectedClient.Id}, IP {disconnectedClient.EndPoint}) disconnected.");
 			ConnectedClients.Remove(client);
+
+			SendUsersListToAllClients();
 		}
 	}
 }

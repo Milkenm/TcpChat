@@ -24,6 +24,8 @@ namespace Chat_Client.Pages
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
+			Client.GetInstance().SetTitle(null);
+
 			Task.Factory.StartNew(() =>
 			{
 				SetLoginPanelStatus(false);
@@ -93,7 +95,11 @@ namespace Chat_Client.Pages
 					return;
 				}
 
-				Dispatcher.Invoke(() => Client.GetInstance().SetPage(new ChatPage()));
+				Dispatcher.Invoke(() =>
+				{
+					Client.GetInstance().SetPage(new ChatPage());
+					Client.GetInstance().SetTitle(username);
+				});
 			}), true);
 		}
 	}

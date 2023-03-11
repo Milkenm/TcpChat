@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat_Client"
         mc:Ignorable="d"
-        Title="Client" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Client" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize">
 	
 	<Grid Height="450" Width="800">
 		<DockPanel>

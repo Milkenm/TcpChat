@@ -7,6 +7,7 @@ using System.Windows.Media;
 using Chat_API.Packets;
 
 using ScriptsLibV2.Extensions;
+
 namespace Chat_Client.Pages
 {
 	/// <summary>
@@ -21,6 +22,12 @@ namespace Chat_Client.Pages
 			NetworkClient.Client.OnDisconnect += Client_OnDisconnect;
 		}
 
+		private void Page_Loaded(object sender, RoutedEventArgs e)
+		{
+			// This is handled by the default packet handler
+			NetworkClient.Client.Send(new RequestUsersInRoomPacket());
+		}
+
 		private void Client_OnDisconnect()
 		{
 			Dispatcher.Invoke(() => Client.GetInstance().SetPage(new LoginPage()));
@@ -29,13 +36,29 @@ namespace Chat_Client.Pages
 		private void Client_OnDataReceived(EndPoint source, byte[] data)
 		{
 			IPacket packet = data.ToObject<IPacket>();
-			if (packet is ServerMessagePacket serverMessagePacket)
+			switch (packet)
 			{
-				Dispatcher.Invoke(() =>
-				{
-					listBox_chat.Items.Add($"{serverMessagePacket.Username}: {serverMessagePacket.Message}");
-					ScrollToEnd();
-				});
+				case ServerMessagePacket serverMessagePacket:
+					{
+						Dispatcher.Invoke(() =>
+						{
+							listBox_chat.Items.Add($"{serverMessagePacket.Username}: {serverMessagePacket.Message}");
+							ScrollToEnd();
+						});
+						break;
+					}
+				case UsersInRoomPacket usersInRoomPacket:
+					{
+						Dispatcher.Invoke(() =>
+						{
+							listBox_users.Items.Clear();
+							foreach (string userInRoom in usersInRoomPacket.UsersInRoom)
+							{
+								listBox_users.Items.Add(userInRoom);
+							}
+						});
+						break;
+					}
 			}
 		}
 

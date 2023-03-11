@@ -34,5 +34,16 @@ namespace Chat_Client
 			string pageUri = $"Pages/{page.GetType().Name}.xaml";
 			frame_page.Source = new Uri(pageUri, UriKind.Relative);
 		}
+		public void SetTitle(string username)
+		{
+			if (username != null)
+			{
+				Title = $"TcpChat: {username}";
+			}
+			else
+			{
+				Title = "TcpChat";
+			}
+		}
 	}
 }

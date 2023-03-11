@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Chat_Client.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ChatPage">
+      Title="ChatPage" Loaded="Page_Loaded">
 	
 	<Grid>
 		<ListBox x:Name="listBox_chat" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="25,25,160,75"/>

@@ -49,8 +49,10 @@
     <Compile Include="Packets\LoginResultPacket.cs" />
     <Compile Include="Packets\ClientMessagePacket.cs" />
     <Compile Include="Packets\RequestServerStatusPacket.cs" />
+    <Compile Include="Packets\RequestUsersInRoomPacket.cs" />
     <Compile Include="Packets\ServerMessagePacket.cs" />
     <Compile Include="Packets\ServerStatusPacket.cs" />
+    <Compile Include="Packets\UsersInRoomPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
