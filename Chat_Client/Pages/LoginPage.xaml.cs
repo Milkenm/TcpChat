@@ -1,9 +1,9 @@
-﻿using System.Net;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using Chat_API;
 using Chat_API.Packets;
 
 using ScriptsLibV2.Extensions;
@@ -32,7 +32,7 @@ namespace Chat_Client.Pages
 
 				try
 				{
-					NetworkClient.Client.Connect(IPAddress.Loopback, 4725);
+					NetworkClient.Client.Connect(Settings.ServerAddress, Settings.ServerPort);
 					NetworkClient.Client.Send(new RequestServerStatusPacket(), new DataReceivedCallback<ServerStatusPacket>((statusPacket) =>
 					{
 						SetStatusLabel(statusPacket.Status);

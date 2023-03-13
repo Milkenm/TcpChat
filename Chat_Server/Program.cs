@@ -21,7 +21,7 @@ namespace Chat_Server
 
 		private static void Main(string[] args)
 		{
-			Server = new TcpServer(4725);
+			Server = new TcpServer(Settings.ServerPort);
 			Server.OnClientConnect += Server_OnClientConnect;
 			Server.OnClientDisconnect += Server_OnClientDisconnect;
 			Server.OnDataReceived += Server_OnDataReceived;

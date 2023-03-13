@@ -6,12 +6,22 @@
       xmlns:local="clr-namespace:Chat_Client.Pages"
       mc:Ignorable="d"
       Title="LoginPage" Height="450" Width="800" Loaded="Page_Loaded">
-
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Style/Global_Button.xaml"/>
+				<ResourceDictionary Source="/Style/Global_Label.xaml"/>
+				<ResourceDictionary Source="/Style/Global_Rectangle.xaml"/>
+				<ResourceDictionary Source="/Style/Global_TextBox.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
+	
 	<Grid>
-		<Rectangle HorizontalAlignment="Center" Height="226" Stroke="Black" VerticalAlignment="Center" Width="400"/>
-		<TextBox x:Name="textBox_username" KeyDown="textBox_username_KeyDown" HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" MaxLength="16"/>
-		<Button x:Name="button_login"  Content="Login" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top" Width="70" Click="button_login_Click"/>
-		<Label x:Name="label_status" Content="Server Status: Checking..." HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top" Padding="10,5,5,10"/>
-		<Label Content="Username" HorizontalAlignment="Left" Margin="310,189,0,0" VerticalAlignment="Top" Padding="0,0,0,2"/>
+		<Rectangle Style="{StaticResource RectangleStyle}" HorizontalAlignment="Center" Height="226" VerticalAlignment="Center" Width="400"/>
+		<TextBox x:Name="textBox_username" Style="{StaticResource TextBoxStyle}" KeyDown="textBox_username_KeyDown" HorizontalAlignment="Center" Margin="0,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" MaxLength="16"/>
+		<Button x:Name="button_login" Style="{StaticResource ButtonStyle}" Content="Login" HorizontalAlignment="Center" Margin="0,243,0,0" VerticalAlignment="Top" Width="110" Click="button_login_Click" Height="27"/>
+		<Label x:Name="label_status" Style="{StaticResource LabelStyle}" Content="Server Status: Checking..." HorizontalAlignment="Left" Margin="200,307,0,0" VerticalAlignment="Top" Padding="10,5,5,10"/>
+		<Label Content="Username" Style="{StaticResource LabelStyle}" HorizontalAlignment="Left" Margin="310,189,0,0" VerticalAlignment="Top" Padding="0,0,0,2"/>
 	</Grid>
 </Page>

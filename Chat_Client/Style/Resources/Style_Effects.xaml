@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Style/Resources/Style_Brushes.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+
+	<DropShadowEffect Opacity="0.45" x:Key="ShadowEffect" BlurRadius="50" Direction="-40" ShadowDepth="5" Color="{StaticResource Shadow}"/>
+</ResourceDictionary>

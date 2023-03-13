@@ -1,10 +1,4 @@
-﻿using System.Windows;
-
-using Chat_API.Packets;
-
-using ScriptsLibV2;
-
-using static ScriptsLibV2.TcpClient;
+﻿using ScriptsLibV2;
 
 namespace Chat_Client
 {

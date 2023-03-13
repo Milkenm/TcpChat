@@ -7,12 +7,23 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChatPage" Loaded="Page_Loaded">
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Style/Global_Button.xaml"/>
+				<ResourceDictionary Source="/Style/Global_Label.xaml"/>
+				<ResourceDictionary Source="/Style/Global_ListBox.xaml"/>
+				<ResourceDictionary Source="/Style/Global_TextBox.xaml"/>
+				<ResourceDictionary Source="/Style/Resources/Style_Brushes.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
 	
 	<Grid>
-		<ListBox x:Name="listBox_chat" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="25,25,160,75"/>
-		<ListBox x:Name="listBox_users" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="645,51,25,25"/>
-		<TextBox x:Name="textBox_chat" KeyDown="textBox_chat_KeyDown" HorizontalAlignment="Left" Margin="25,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="545" Height="25"/>
-		<Button x:Name="button_send" Content="Send" HorizontalAlignment="Left" Margin="575,388,0,0" VerticalAlignment="Top" Height="25" Width="65" Click="button_send_Click"/>
-		<Label Content="Users in room:" HorizontalAlignment="Left" Margin="645,25,0,0" VerticalAlignment="Top" Padding="0,0,0,5"/>
+		<ListBox x:Name="listBox_chat" Style="{StaticResource ListBoxStyle}" Margin="25,25,160,75" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+		<ListBox x:Name="listBox_users" Style="{StaticResource ListBoxStyle}" Margin="645,51,25,25" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+		<TextBox x:Name="textBox_chat" Style="{StaticResource TextBoxStyle}" KeyDown="textBox_chat_KeyDown" HorizontalAlignment="Left" Margin="25,388,0,0" VerticalAlignment="Top" Width="545" Height="25" />
+		<Button x:Name="button_send" Style="{StaticResource ButtonStyle}" Content="Send" HorizontalAlignment="Left" Margin="575,388,0,0" VerticalAlignment="Top" Height="25" Width="65" Click="button_send_Click"/>
+		<Label Style="{StaticResource LabelStyle}" Content="Users in room:" HorizontalAlignment="Left" Margin="645,25,0,0" VerticalAlignment="Top" Padding="0,0,0,5"/>
 	</Grid>
 </Page>

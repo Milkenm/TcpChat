@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/Style/Resources/Style_Colors.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+	
+	<LinearGradientBrush x:Key="BackgroundGradientBrush" EndPoint="0.4,1" StartPoint="0,0">
+		<GradientStop Color="#FF6608A9" Offset="1"/>
+		<GradientStop Color="#FF9E0066" Offset="0.317"/>
+		<GradientStop Color="#FFBB003C" Offset="0"/>
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="TransparentBackgroundGradientBrush" Opacity="0.75" GradientStops="{Binding GradientStops, Source={StaticResource BackgroundGradientBrush}}"/>
+
+	<LinearGradientBrush x:Key="ControlsBackgroundBrush" EndPoint="1,1" StartPoint="0,1" SpreadMethod="Reflect" Opacity="0.1">
+		<GradientStop Color="White" Offset="0"/>
+		<GradientStop Color="#FFAC00E2" Offset="1"/>
+	</LinearGradientBrush>
+
+	<LinearGradientBrush x:Key="WhiteGradientBrush" EndPoint="0.25,1" StartPoint="0,0.25">
+		<GradientStop Color="#26CFFFC8"/>
+		<GradientStop Color="#26B1EFFF" Offset="1"/>
+	</LinearGradientBrush>
+
+	<SolidColorBrush x:Key="FontBrush" Color="{StaticResource TransparentWhite}"/>
+	<SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
+	<SolidColorBrush x:Key="BorderBrush" Color="{StaticResource White}"/>
+	<SolidColorBrush x:Key="GrayedOutBorderBrush" Color="{StaticResource White}" Opacity="0.35"/>
+	<SolidColorBrush x:Key="GrayedOutFontBrush" Color="{StaticResource White}" Opacity="0.35"/>
+</ResourceDictionary>

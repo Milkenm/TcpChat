@@ -87,6 +87,9 @@ namespace Chat_Client.Pages
 
 		private void SendMessage()
 		{
+			// Focus textBox
+			textBox_chat.Focus();
+
 			// Validate
 			string message = textBox_chat.Text;
 			if (message.IsEmpty()) { return; }
@@ -99,7 +102,6 @@ namespace Chat_Client.Pages
 
 			// Clear textbox
 			textBox_chat.Text = string.Empty;
-			textBox_chat.Focus();
 		}
 	}
 }

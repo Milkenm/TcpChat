@@ -54,6 +54,7 @@
     <Compile Include="Packets\ServerStatusPacket.cs" />
     <Compile Include="Packets\UsersInRoomPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ScriptsLib\ScriptsLibV2\ScriptsLibV2.csproj">

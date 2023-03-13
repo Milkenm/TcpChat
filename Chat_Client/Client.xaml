@@ -6,8 +6,15 @@
         xmlns:local="clr-namespace:Chat_Client"
         mc:Ignorable="d"
         Title="Client" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize">
-	
-	<Grid Height="450" Width="800">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Style/Client_Background.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<Grid Height="450" Width="800" Style="{StaticResource GridStyle}">
 		<DockPanel>
 			<Frame x:Name="frame_page" NavigationUIVisibility="Hidden"/>
 		</DockPanel>
