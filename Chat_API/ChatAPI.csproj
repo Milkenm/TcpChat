@@ -7,8 +7,8 @@
     <ProjectGuid>{A53098C8-1C40-4EAB-B578-63F564086B9F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Chat_API</RootNamespace>
-    <AssemblyName>Chat_API</AssemblyName>
+    <RootNamespace>ChatAPI</RootNamespace>
+    <AssemblyName>ChatAPI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -30,9 +30,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\TcpChatIcon_ICO.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +58,11 @@
     <Compile Include="Packets\ServerStatusPacket.cs" />
     <Compile Include="Packets\UsersInRoomPacket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +70,18 @@
       <Project>{72f24e15-8649-49ac-8bc6-435f215cb3b0}</Project>
       <Name>ScriptsLibV2</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TcpChatIcon_ICO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TcpChatIcon_PNG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

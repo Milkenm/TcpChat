@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Chat_Client")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("TCP Chat (Client)")]
+[assembly: AssemblyDescription("A simple chat using TCP clients.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Milkenm")]
-[assembly: AssemblyProduct("Chat_Client")]
+[assembly: AssemblyProduct("TCP Chat (Client)")]
 [assembly: AssemblyCopyright("Copyright © Milkenm 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

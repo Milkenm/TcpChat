@@ -1,4 +1,4 @@
-﻿namespace Chat_API.Packets
+﻿namespace ChatAPI.Packets
 {
 	public enum EServerStatus
 	{

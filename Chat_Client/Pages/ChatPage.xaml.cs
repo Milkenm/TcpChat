@@ -1,14 +1,16 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using Chat_API.Packets;
+using ChatAPI.Packets;
 
 using ScriptsLibV2.Extensions;
 
-namespace Chat_Client.Pages
+namespace ChatClient.Pages
 {
 	/// <summary>
 	/// Interaction logic for ChatPage.xaml
@@ -18,14 +20,14 @@ namespace Chat_Client.Pages
 		public ChatPage()
 		{
 			InitializeComponent();
-			NetworkClient.Client.OnDataReceived += Client_OnDataReceived;
-			NetworkClient.Client.OnDisconnect += Client_OnDisconnect;
+			ChatClientInfo.TcpClient.OnDataReceived += Client_OnDataReceived;
+			ChatClientInfo.TcpClient.OnDisconnect += Client_OnDisconnect;
 		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
 			// This is handled by the default packet handler
-			NetworkClient.Client.Send(new RequestUsersInRoomPacket());
+			ChatClientInfo.TcpClient.Send(new RequestUsersInRoomPacket());
 		}
 
 		private void Client_OnDisconnect()
@@ -42,7 +44,7 @@ namespace Chat_Client.Pages
 					{
 						Dispatcher.Invoke(() =>
 						{
-							listBox_chat.Items.Add($"{serverMessagePacket.Username}: {serverMessagePacket.Message}");
+							LogChat(serverMessagePacket.Username, serverMessagePacket.Message);
 							ScrollToEnd();
 						});
 						break;
@@ -96,12 +98,17 @@ namespace Chat_Client.Pages
 
 			// Send message
 			ClientMessagePacket messagePacket = new ClientMessagePacket(message);
-			NetworkClient.Client.Send(messagePacket);
-			listBox_chat.Items.Add($"YOU: {message}");
+			ChatClientInfo.TcpClient.Send(messagePacket);
+			LogChat(ChatClientInfo.Username, message);
 			ScrollToEnd();
 
 			// Clear textbox
 			textBox_chat.Text = string.Empty;
+		}
+
+		private void LogChat(string username, string message)
+		{
+			listBox_chat.Items.Add($"[{DateTime.Now}] {username} > {message}");
 		}
 	}
 }

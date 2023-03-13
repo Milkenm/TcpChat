@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E6ED061D-82B1-4733-AC3D-27D0CD96A8BE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Chat_Client</RootNamespace>
-    <AssemblyName>Chat_Client</AssemblyName>
+    <RootNamespace>ChatClient</RootNamespace>
+    <AssemblyName>ChatClient</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,7 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Chat_Client.App</StartupObject>
+    <StartupObject>ChatClient.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TcpChatIcon_ICO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,7 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NetworkClient.cs" />
+    <Compile Include="ChatClient.cs" />
     <Compile Include="Client.xaml.cs">
       <DependentUpon>Client.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\Resources\Style_Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\ChatPage.xaml.cs">
@@ -154,10 +161,13 @@
       <Project>{72f24e15-8649-49ac-8bc6-435f215cb3b0}</Project>
       <Name>ScriptsLibV2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chat_API\Chat_API.csproj">
+    <ProjectReference Include="..\Chat_API\ChatAPI.csproj">
       <Project>{a53098c8-1c40-4eab-b578-63f564086b9f}</Project>
-      <Name>Chat_API</Name>
+      <Name>ChatAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TcpChatIcon_ICO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

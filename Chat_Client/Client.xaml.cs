@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 
-using Chat_Client.Pages;
+using ChatClient.Pages;
 
-namespace Chat_Client
+namespace ChatClient
 {
 	/// <summary>
 	/// Interaction logic for Client.xaml
@@ -38,11 +38,11 @@ namespace Chat_Client
 		{
 			if (username != null)
 			{
-				Title = $"TcpChat: {username}";
+				Title = $"TCP Chat ({username})";
 			}
 			else
 			{
-				Title = "TcpChat";
+				Title = "TCP Chat";
 			}
 		}
 	}

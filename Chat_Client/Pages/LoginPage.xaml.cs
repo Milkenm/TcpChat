@@ -3,14 +3,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-using Chat_API;
-using Chat_API.Packets;
+using ChatAPI;
+using ChatAPI.Packets;
 
 using ScriptsLibV2.Extensions;
 
 using static ScriptsLibV2.TcpClient;
 
-namespace Chat_Client.Pages
+namespace ChatClient.Pages
 {
 	/// <summary>
 	/// Interaction logic for LoginPage.xaml
@@ -32,8 +32,8 @@ namespace Chat_Client.Pages
 
 				try
 				{
-					NetworkClient.Client.Connect(Settings.ServerAddress, Settings.ServerPort);
-					NetworkClient.Client.Send(new RequestServerStatusPacket(), new DataReceivedCallback<ServerStatusPacket>((statusPacket) =>
+					ChatClientInfo.TcpClient.Connect(Settings.ServerAddress, Settings.ServerPort);
+					ChatClientInfo.TcpClient.Send(new RequestServerStatusPacket(), new DataReceivedCallback<ServerStatusPacket>((statusPacket) =>
 					{
 						SetStatusLabel(statusPacket.Status);
 
@@ -87,7 +87,7 @@ namespace Chat_Client.Pages
 				return;
 			}
 
-			NetworkClient.Client.Send(new LoginPacket(username), new DataReceivedCallback<LoginResultPacket>((loginResult) =>
+			ChatClientInfo.TcpClient.Send(new LoginPacket(username), new DataReceivedCallback<LoginResultPacket>((loginResult) =>
 			{
 				if (loginResult.Result == ELoginResult.USERNAME_TAKEN)
 				{
@@ -97,8 +97,8 @@ namespace Chat_Client.Pages
 
 				Dispatcher.Invoke(() =>
 				{
+					ChatClientInfo.Username = username;
 					Client.GetInstance().SetPage(new ChatPage());
-					Client.GetInstance().SetTitle(username);
 				});
 			}), true);
 		}

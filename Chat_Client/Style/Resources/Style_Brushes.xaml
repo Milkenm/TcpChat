@@ -21,9 +21,10 @@
 		<GradientStop Color="#26B1EFFF" Offset="1"/>
 	</LinearGradientBrush>
 
-	<SolidColorBrush x:Key="FontBrush" Color="{StaticResource TransparentWhite}"/>
+	<SolidColorBrush x:Key="FontBrush" Color="{StaticResource SlightlyTransparentWhite}"/>
 	<SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"/>
 	<SolidColorBrush x:Key="BorderBrush" Color="{StaticResource White}"/>
 	<SolidColorBrush x:Key="GrayedOutBorderBrush" Color="{StaticResource White}" Opacity="0.35"/>
 	<SolidColorBrush x:Key="GrayedOutFontBrush" Color="{StaticResource White}" Opacity="0.35"/>
+	<SolidColorBrush x:Key="TransparentBrush" Color="{StaticResource TransparentWhite}"/>
 </ResourceDictionary>

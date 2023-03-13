@@ -1,10 +1,12 @@
-﻿namespace Chat_API.Packets
+﻿namespace ChatAPI.Packets
 {
 	public enum ELoginResult
 	{
 		SUCCESS,
 		USERNAME_TAKEN,
 		USERNAME_BANNED,
+		INVALID_CHARACTER,
+		DUPLICATE_CONNECTION,
 		IP_BANNED,
 	}
 }

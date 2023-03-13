@@ -1,6 +1,8 @@
 ﻿using System.Net;
 
-namespace Chat_API
+using ScriptsLibV2.Extensions;
+
+namespace ChatAPI
 {
 	public class ChatUserInfo
 	{
@@ -14,9 +16,15 @@ namespace Chat_API
 			EndPoint = endPoint;
 		}
 
-		public void SetName(string name)
+		public void SetUsername(string name)
 		{
 			Username = name;
+		}
+
+		public override string ToString()
+		{
+			string username = !Username.IsEmpty() ? Username : "<no_username>";
+			return $"{EndPoint}/{Username}#{Id}";
 		}
 	}
 }

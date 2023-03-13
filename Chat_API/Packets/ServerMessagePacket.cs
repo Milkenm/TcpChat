@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chat_API.Packets
+namespace ChatAPI.Packets
 {
 	[Serializable]
 	public class ServerMessagePacket : IPacket

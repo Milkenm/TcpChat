@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Chat_Server")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("TCP Chat (Server)")]
+[assembly: AssemblyDescription("A chat server using a TCP Listener.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Milkenm")]
-[assembly: AssemblyProduct("Chat_Server")]
+[assembly: AssemblyProduct("TCP Chat (Server)")]
 [assembly: AssemblyCopyright("Copyright © Milkenm 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

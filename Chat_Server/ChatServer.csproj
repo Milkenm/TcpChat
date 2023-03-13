@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CF5361FF-4DCB-43F9-8786-744D44A0F778}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Chat_Server</RootNamespace>
-    <AssemblyName>Chat_Server</AssemblyName>
+    <RootNamespace>ChatServer</RootNamespace>
+    <AssemblyName>ChatServer</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TcpChatIcon_ICO.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,10 +57,13 @@
       <Project>{72f24e15-8649-49ac-8bc6-435f215cb3b0}</Project>
       <Name>ScriptsLibV2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Chat_API\Chat_API.csproj">
+    <ProjectReference Include="..\Chat_API\ChatAPI.csproj">
       <Project>{a53098c8-1c40-4eab-b578-63f564086b9f}</Project>
-      <Name>Chat_API</Name>
+      <Name>ChatAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TcpChatIcon_ICO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
