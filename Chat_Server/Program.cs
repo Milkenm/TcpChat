@@ -97,8 +97,8 @@ namespace ChatServer
 						}
 
 						// Success
-						ChatUserInfo userInfo = ConnectedClients[client];
-						userInfo.SetUsername(loginPacket.Username);
+						ChatUserInfo userInfo = new ChatUserInfo(ClientIdCounter, loginPacket.Username, client.RemoteEndPoint);
+						ConnectedClients.Add(client, userInfo);
 						Server.SendObject(client, new LoginResultPacket(ELoginResult.SUCCESS));
 						Log($"Client ({GetClientInfo(client)} connected with username '{loginPacket.Username}'.");
 
@@ -169,8 +169,6 @@ namespace ChatServer
 			// Check if client is already connected
 			if (ConnectedClients.ContainsKey(client)) { return; }
 
-			ChatUserInfo connectedClient = new ChatUserInfo(ClientIdCounter, client.RemoteEndPoint);
-			ConnectedClients.Add(client, connectedClient);
 			Log($"Client ({GetClientInfo(client)}) connected.");
 			ClientIdCounter++;
 		}

@@ -10,15 +10,11 @@ namespace ChatAPI
 		public string Username { get; private set; }
 		public EndPoint EndPoint { get; }
 
-		public ChatUserInfo(long id, EndPoint endPoint)
+		public ChatUserInfo(long id, string username, EndPoint endPoint)
 		{
 			Id = id;
+			Username = username;
 			EndPoint = endPoint;
-		}
-
-		public void SetUsername(string name)
-		{
-			Username = name;
 		}
 
 		public override string ToString()
