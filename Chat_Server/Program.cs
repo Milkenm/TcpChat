@@ -178,7 +178,7 @@ namespace ChatServer
 		private static void Server_OnClientDisconnect(Socket client)
 		{
 			ChatUserInfo disconnectedClient = ConnectedClients[client];
-			Log($"Client ({GetClientInfo(client)} disconnected.");
+			Log($"Client ({GetClientInfo(client)}) disconnected.");
 			ConnectedClients.Remove(client);
 
 			SendUsersListToAllClients();
