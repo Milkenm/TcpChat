@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace ChatServer
 		{
 			if (Utils.IsDebugEnabled())
 			{
-				Console.WriteLine(log);
+				Debug.WriteLine($"[{DateTime.Now}][DEBUG] {log}");
 			}
 		}
 
